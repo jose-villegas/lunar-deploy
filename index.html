@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
+  <title>Lunar Deploy</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+    #stage { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+    /* 9:16 portrait at the largest size the window allows. */
+    #unity-canvas {
+      width: min(100vw, calc(100vh * 9 / 16));
+      height: min(100vh, calc(100vw * 16 / 9));
+      background: #0a0f24;
+      outline: none;
+    }
+    #loading { position: fixed; left: 50%; bottom: 12%; width: 40vmin; height: 4px; transform: translateX(-50%); background: #1b2340; }
+    #loading-bar { width: 0; height: 100%; background: #5ac8ff; transition: width 0.1s; }
+  </style>
+</head>
+<body>
+  <div id="stage"><canvas id="unity-canvas" tabindex="-1"></canvas></div>
+  <div id="loading"><div id="loading-bar"></div></div>
+  <script src="Build/WebGL.loader.js"></script>
+  <script>
+    const canvas = document.querySelector("#unity-canvas");
+    const loading = document.querySelector("#loading");
+    const bar = document.querySelector("#loading-bar");
+    createUnityInstance(canvas, {
+      dataUrl: "Build/WebGL.data.unityweb",
+      frameworkUrl: "Build/WebGL.framework.js.unityweb",
+      codeUrl: "Build/WebGL.wasm.unityweb",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "DefaultCompany",
+      productName: "Lunar Deploy",
+      productVersion: "1.0",
+    }, (progress) => {
+      bar.style.width = `${progress * 100}%`;
+    }).then(() => {
+      loading.remove();
+      canvas.focus();
+    }).catch((message) => {
+      alert(message);
+    });
+  </script>
+</body>
+</html>
