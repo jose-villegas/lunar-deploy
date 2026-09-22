@@ -11,6 +11,7 @@ A vertical bullet-hell shooter. **Play in the browser:** https://jose-villegas.g
 | Space / Z | fire |
 | Shift / X | focus (slow, precise) |
 | Enter | play again |
+| M | mute |
 
 ## Dev tools
 
