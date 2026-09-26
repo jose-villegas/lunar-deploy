@@ -30,7 +30,7 @@
 <body>
   <div id="stage"><canvas id="unity-canvas" tabindex="-1"></canvas></div>
   <div id="loading"><div id="loading-bar"></div></div>
-  <script src="builds/20260926092303/Build/WebGL.loader.js"></script>
+  <script src="builds/20260926100628/Build/WebGL.loader.js"></script>
   <script>
     const canvas = document.querySelector("#unity-canvas");
     const loading = document.querySelector("#loading");
@@ -41,10 +41,10 @@
     }
     document.addEventListener("contextmenu", (event) => event.preventDefault());
     createUnityInstance(canvas, {
-      dataUrl: "builds/20260926092303/Build/WebGL.data.unityweb",
-      frameworkUrl: "builds/20260926092303/Build/WebGL.framework.js.unityweb",
-      codeUrl: "builds/20260926092303/Build/WebGL.wasm.unityweb",
-      streamingAssetsUrl: "builds/20260926092303/StreamingAssets",
+      dataUrl: "builds/20260926100628/Build/WebGL.data.unityweb",
+      frameworkUrl: "builds/20260926100628/Build/WebGL.framework.js.unityweb",
+      codeUrl: "builds/20260926100628/Build/WebGL.wasm.unityweb",
+      streamingAssetsUrl: "builds/20260926100628/StreamingAssets",
       // Phones report ~3x pixel density: rendering at full density shrinks Bloom's reach and the
       // spark dither to a fraction of the screen (harsh, washed-out glow) and costs ~4x the pixels.
       // Capped, a phone renders close to a laptop, so the neon looks the same on both.
